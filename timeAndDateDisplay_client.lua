@@ -4,20 +4,10 @@ local displayDayOfWeek = true
 local displayDate = true
 
 -- Display Time and Date at top right of screen
-CreateThread(function()
-	SetTextColour(255, 255, 255, 255)
-	SetTextDropshadow(0, 0, 0, 0, 255)
-	SetTextDropShadow()
-	SetTextEdge(1, 0, 0, 0, 255)
-	SetTextEntry("STRING")
-	SetTextFont(0)
-	SetTextJustification(2)
-	SetTextOutline()
-    SetTextProportional(1)
-    SetTextScale(0.0, 0.5)
-    SetTextWrap(0.0, 0.95)
+Citizen.CreateThread(function()
 	
 	while true do -- format: | 12:13 | Wednesday | January 17, 2017 |
+		Citizen.Wait(1)
 		local timeAndDateString = "|"
 		
 		if displayTime then
@@ -25,8 +15,9 @@ CreateThread(function()
 			local minute = GetClockMinutes()
 		
 			if !useMilitaryTime then
-				hour = hour + 1
-				if hour >= 13 then
+				if hour == 0 or hour == 24 then
+					hour = 12
+				elseif hour >= 13 then
 					hour = hour - 12
 				end
 			end
@@ -94,9 +85,17 @@ CreateThread(function()
 			end
 			timeAndDateString = timeAndDateString .. " " .. month .. " " .. dayOfMonth .. ", " .. year .. " |"
 		end
+		SetTextFont(0)
+        SetTextProportional(1)
+        SetTextScale(0.0, 0.55)
+        SetTextColour(255, 255, 255, 255)
+        SetTextDropshadow(0, 0, 0, 0, 255)
+        SetTextEdge(1, 0, 0, 0, 255)
+        SetTextDropShadow()
+        SetTextOutline()
+        SetTextEntry("STRING")
 		
         AddTextComponentString(timeAndDateString)
-        DrawText(0.5, 0.015)
-        Wait(1000)
+        DrawText(0.985, 0.5)
 	end
 end)
