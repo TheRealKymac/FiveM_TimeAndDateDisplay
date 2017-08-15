@@ -25,9 +25,9 @@ CreateThread(function()
 			local minute = GetClockMinutes()
 		
 			if !useMilitaryTime then
-				hour + 1
+				hour = hour + 1
 				if hour >= 13 then
-					hour - 12
+					hour = hour - 12
 				end
 			end
 
