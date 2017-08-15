@@ -86,16 +86,16 @@ Citizen.CreateThread(function()
 			timeAndDateString = timeAndDateString .. " " .. month .. " " .. dayOfMonth .. ", " .. year .. " |"
 		end
 		SetTextFont(0)
-        SetTextProportional(1)
-        SetTextScale(0.0, 0.55)
-        SetTextColour(255, 255, 255, 255)
-        SetTextDropshadow(0, 0, 0, 0, 255)
-        SetTextEdge(1, 0, 0, 0, 255)
-        SetTextDropShadow()
-        SetTextOutline()
-        SetTextEntry("STRING")
-		
-        AddTextComponentString(timeAndDateString)
-        DrawText(0.985, 0.5)
+		SetTextProportional(1)
+		SetTextScale(0.0, 0.55)
+		SetTextColour(255, 255, 255, 255)
+		SetTextDropshadow(0, 0, 0, 0, 255)
+		SetTextEdge(1, 0, 0, 0, 255)
+		SetTextDropShadow()
+		SetTextOutline()
+		SetTextEntry("STRING")
+
+		AddTextComponentString(timeAndDateString)
+		DrawText(0.985, 0.5)
 	end
 end)
