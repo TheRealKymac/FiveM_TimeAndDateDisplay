@@ -4,12 +4,12 @@ local displayDayOfWeek = true
 local displayDate = true
 
 local timeAndDateString = nil
-local hour = 1
-local minute = 0
-local dayOfWeek = 1
-local month = 1
-local dayOfMonth = 1
-local year = 2017
+local hour
+local minute
+local dayOfWeek
+local month
+local dayOfMonth
+local year
 
 -- Display Time and Date at top right of screen -- format: | 12:13 | Wednesday | January 17, 2017 |
 Citizen.CreateThread(function()
@@ -38,10 +38,12 @@ Citizen.CreateThread(function()
 		SetTextEdge(1, 0, 0, 0, 255)
 		SetTextDropShadow()
 		SetTextOutline()
+		SetTextRightJustify(true)
+		SetTextWrap(0,0.95)
 		SetTextEntry("STRING")
 		
 		AddTextComponentString(timeAndDateString)
-		DrawText(0.8, 0.01)
+		DrawText(0.5, 0.01)
 	end
 end)
 
