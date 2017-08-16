@@ -1,2 +1,2 @@
 description "Time And Date Display"
-client_script "timeAndDateDisplayClient.lua"
+client_script "timeAndDateDisplay_client.lua"
