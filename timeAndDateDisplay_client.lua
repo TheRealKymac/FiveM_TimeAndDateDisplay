@@ -11,7 +11,7 @@ local month
 local dayOfMonth
 local year
 
--- Display Time and Date at top right of screen -- format: | 12:13 | Wednesday | January 17, 2017 |
+-- Display Time and Date at top right of screen -- format: | 12:13 AM/PM | Wednesday | January 17, 2017 |
 Citizen.CreateThread(function()
 	while true do
 		Wait(1)
@@ -19,7 +19,7 @@ Citizen.CreateThread(function()
 		
 		if displayTime == true then
 			CalculateTimeToDisplay()
-			timeAndDateString = timeAndDateString .. " " .. hour .. ":" .. minute .. " |"
+			timeAndDateString = timeAndDateString .. " " .. hour .. ":" .. minute .. amORpm .. " |"
 		end
 		if displayDayOfWeek == true then
 			CalculateDayOfWeekToDisplay()
@@ -53,8 +53,10 @@ function CalculateTimeToDisplay()
 
 	if useMilitaryTime == false then
 		if hour == 0 or hour == 24 then
+		  amORpm = " AM "
 			hour = 12
 		elseif hour >= 13 then
+		  amORpm = " PM "
 			hour = hour - 12
 		end
 	end
